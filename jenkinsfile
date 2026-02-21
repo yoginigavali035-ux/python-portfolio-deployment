@@ -5,7 +5,7 @@ pipeline {
         SSH_CRED = 'python-portfolio-app-key'               // Jenkins credential ID
         SERVER_IP = '172.31.40.143'          // Your Deploy EC2 IP
         REMOTE_USER = 'ubuntu'
-        WEB_DIR = '/home/ubuntu/myportfolio'
+        WEB_DIR = '/var/www/html/'
     }
 
     stages {

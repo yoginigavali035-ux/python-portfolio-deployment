@@ -5,7 +5,7 @@ pipeline {
         SSH_CRED = 'python-portfolio-app-key'               // Jenkins credential ID
         SERVER_IP = '172.31.40.143'          // Your Deploy EC2 IP
         REMOTE_USER = 'ubuntu'
-        WEB_DIR = '/var/www/html/python'
+        WEB_DIR = '/var/www/html'
     }
 
     stages {
@@ -21,6 +21,7 @@ pipeline {
                     sh '''
                         echo "Cleaning old files on server..."
                         ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${SERVER_IP} "sudo rm -rf ${WEB_DIR}/*"
+                          ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${SERVER_IP} "mkdir -p ${APP_DIR}"
 
                         echo "Uploading new files to /tmp on server..."
                         scp -r index.html css js fonts images ${REMOTE_USER}@${SERVER_IP}:/tmp/

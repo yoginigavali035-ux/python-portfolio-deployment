@@ -21,7 +21,7 @@ pipeline {
                     sh '''
                         echo "Cleaning old files on server..."
                         ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${SERVER_IP} "sudo rm -rf ${WEB_DIR}/*"
-                          ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${SERVER_IP} "mkdir -p ${APP_DIR}"
+                         
 
                         echo "Uploading new files to /tmp on server..."
                         scp -r index.html css js fonts images ${REMOTE_USER}@${SERVER_IP}:/tmp/
